@@ -1,0 +1,127 @@
+﻿// Readable 3.0.0
+// Bootswatch
+// -----------------------------------------------------
+@import "variables.less";
+@import "mixins.less";
+
+@import url("//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic");
+
+.btn-shadow(@color) {
+	#gradient > .vertical-three-colors(lighten(@color, 10%), @color, 6%, darken(@color, 4%));
+	border: 1px solid darken(@color, 10%);
+}
+// Angular UI =====================================================================
+.nav, .pagination, .carousel a { cursor: pointer; }
+
+// Navbar =====================================================================
+
+.navbar {
+	.box-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+
+	&-nav > li > a {
+		padding-top: @navbar-padding-vertical + 6px;
+	}
+
+	&-brand {
+		padding-top: @navbar-padding-vertical + 5px;
+	}
+}
+
+// Buttons ====================================================================
+
+.btn-default,
+.btn-default:hover {
+	.btn-shadow(@btn-default-bg);
+}
+
+.btn-primary,
+.btn-primary:hover {
+	.btn-shadow(@btn-primary-bg);
+}
+
+.btn-success,
+.btn-success:hover {
+	.btn-shadow(@btn-success-bg);
+}
+
+.btn-info,
+.btn-info:hover {
+	.btn-shadow(@btn-info-bg);
+}
+
+.btn-warning,
+.btn-warning:hover {
+	.btn-shadow(@btn-warning-bg);
+}
+
+.btn-danger,
+.btn-danger:hover {
+	.btn-shadow(@btn-danger-bg);
+}
+
+// Typography =================================================================
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+.page-header h1 {
+font-size: 4em;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Lora", Georgia, "Times New Roman", Times, serif;
+    font-weight: 500;
+    line-height: 1.1;
+}
+// Tables =====================================================================
+
+// Forms ======================================================================
+.form-error, input.ng-invalid.ng-dirty{
+	color: @brand-danger;
+	font-weight:bold;
+	display:inline
+}
+
+// Navs =======================================================================
+
+.pagination {
+
+	.active > a,
+	.active > a:hover {
+		border-color: #ddd;
+	}
+}
+
+// Indicators =================================================================
+#loading
+{
+    background-color: @brand-info;
+    border-radius: @border-radius-base;
+    color: #FFF;
+    font-weight: bold;
+    margin: 0;
+    max-width: 270px;
+    overflow: hidden;
+    padding: 4px 8px;
+    position: fixed;
+    right: 4px;
+ 	@shadow: 0 1px rgba(0, 0, 0, 0.4);
+	.box-shadow(@shadow);	    
+    bottom: 4px;
+    z-index: 19;
+}
+// Progress bars ==============================================================
+
+// Lists =================================================================
+ul.list-striped li:nth-child(odd) {
+background-color: #ccc;
+}
+ul.list-striped li {
+padding: 5px 0 5px 5px;
+}
+// Containers =================================================================
+#main-content{
+    min-height: 400px;
+}
+footer{
+    border-top:2px solid #777;    
+}

@@ -1,0 +1,14 @@
+﻿underscore.js
+jquery-2.0.3.js
+angular.js 
+angular-resource.js
+angular-route.js
+ui-bootstrap-custom-tpls-0.6.0.js
+../app/main.js
+../app/loading-controller.js
+../app/loading-service.js
+../app/message-controller.js
+../app/message-service.js
+../app/Todo/todo-service.js
+../app/Todo/List/list-controller.js
+../app/Todo/Edit/edit-controller.js
