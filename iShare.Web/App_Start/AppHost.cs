@@ -1,5 +1,6 @@
 using System.Configuration;
 using System.Web.Mvc;
+using DataLayerContext.OrmLiteRepositories;
 using iShare.BusinessLogic;
 using iShare.BusinessLogic.Contracts;
 using iShare.DataContext.OrmLiteRepositories;
@@ -136,8 +137,9 @@ namespace iShare.Web.App_Start
             container.Register<IDbConnectionFactory>(c =>
                 new OrmLiteConnectionFactory(connectionString, SqlServerDialect.Provider));
 
-            container.Register<IUserAuthRepository>(c =>
-                new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
+            //container.Register<IUserAuthRepository>(c =>
+            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
+            container.Register<IUserAuthRepository>(c => new CustomOrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
 
             var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>();
             authRepo.CreateMissingTables();

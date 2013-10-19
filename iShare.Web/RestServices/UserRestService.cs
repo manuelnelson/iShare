@@ -2,7 +2,6 @@
 using ServiceStack.Common;
 using ServiceStack.Common.Web;
 using ServiceStack.ServiceHost;
-using ServiceStack.ServiceInterface;
 using iShare.BusinessLogic.Contracts;
 using iShare.Models;
 
@@ -22,7 +21,7 @@ namespace iShare.Web.RestServices
             public long[] Ids { get; set; }
         }
 
-        public class UsersService : Service
+        public class UsersService : ServiceBase
         {
             public IUserService UserService { get; set; } //Injected by IOC
 

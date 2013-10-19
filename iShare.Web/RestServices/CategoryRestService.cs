@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using ServiceStack.Common;
 using ServiceStack.Common.Web;
 using ServiceStack.ServiceHost;
-using ServiceStack.ServiceInterface;
 using iShare.BusinessLogic.Contracts;
 using iShare.Models;
 
@@ -23,7 +21,7 @@ namespace iShare.Web.RestServices
             public long[] Ids { get; set; }
         }
 
-        public class CategoriesService : Service
+        public class CategoriesService : ServiceBase
         {
             public ICategoryService CategoryService { get; set; } //Injected by IOC
 
