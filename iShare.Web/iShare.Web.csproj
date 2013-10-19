@@ -175,6 +175,7 @@
     <Compile Include="RestServices\CategoryRestService.cs" />
     <Compile Include="RestServices\CauseRestService.cs" />
     <Compile Include="RestServices\CharityRestService.cs" />
+    <Compile Include="RestServices\DonationRestService.cs" />
     <Compile Include="RestServices\ServiceBase.cs" />
     <Compile Include="RestServices\UserAuthRestService.cs" />
     <Compile Include="RestServices\UserRestService.cs" />

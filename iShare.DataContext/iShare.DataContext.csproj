@@ -81,12 +81,14 @@
     <Compile Include="OrmLiteRepositories\CauseOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CharityOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CustomOrmLiteRepository.cs" />
+    <Compile Include="OrmLiteRepositories\DonationOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\OrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\UserOrmLiteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CauseRepository.cs" />
     <Compile Include="Repositories\CharityRepository.cs" />
+    <Compile Include="Repositories\DonationRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

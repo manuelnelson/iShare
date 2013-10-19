@@ -51,5 +51,22 @@ namespace iShare.BusinessLogic
                 throw new Exception("Unable to retrieve information", ex);
             }
         }
+
+        public double UpdateAmount(long userId, double amount)
+        {
+            try
+            {
+                //get current amount and update!
+                var currentUser = UserRepository.Get(userId);
+                currentUser.Donation = currentUser.Donation + amount;
+                UserRepository.Update(currentUser);
+                return currentUser.Donation;
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                throw new Exception("Unable to retrieve information", ex);
+            }
+        }
     }
 }

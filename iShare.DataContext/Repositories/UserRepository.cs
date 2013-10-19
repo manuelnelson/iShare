@@ -14,5 +14,6 @@ namespace iShare.DataContext.Repositories
         {
             return GetDbSet().FirstOrDefault(u => u.UserAuthId == userAuthId);
         }
+
     }
 }

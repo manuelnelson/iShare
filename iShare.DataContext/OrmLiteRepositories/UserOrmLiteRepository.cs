@@ -17,5 +17,6 @@ namespace iShare.DataContext.OrmLiteRepositories
                 return db.FirstOrDefault<User>(u => u.UserAuthId == userAuthId);
             }  
         }
+
     }
 }

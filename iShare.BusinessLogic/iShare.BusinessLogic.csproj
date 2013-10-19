@@ -63,7 +63,9 @@
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\ICauseService.cs" />
     <Compile Include="Contracts\ICharityService.cs" />
+    <Compile Include="Contracts\IDonationService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="DonationService.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

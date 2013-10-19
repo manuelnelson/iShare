@@ -9,6 +9,6 @@ namespace iShare.Models
         [AutoIncrement]
         public long Id { get; set; }
         public int UserAuthId { get; set; }
-        public string Position { get; set; }
+        public double Donation { get; set; }
     }
 }

@@ -42,6 +42,7 @@
     <Compile Include="ICategoryRepository.cs" />
     <Compile Include="ICauseRepository.cs" />
     <Compile Include="ICharityRepository.cs" />
+    <Compile Include="IDonationRepository.cs" />
     <Compile Include="IEfRepository.cs" />
     <Compile Include="IOrmLiteRepository.cs" />
     <Compile Include="IRepository.cs" />

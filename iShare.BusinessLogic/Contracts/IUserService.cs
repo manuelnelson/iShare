@@ -7,5 +7,6 @@ namespace iShare.BusinessLogic.Contracts
     {
         User CreateOrUpdate(User user);
         User GetByUserAuthId(int userAuthId);
+        double UpdateAmount(long userId, double amount);
     }
 }
