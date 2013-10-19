@@ -11,7 +11,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    @(HttpContext.Current.IsDebuggingEnabled ? Html.RenderCssBundle("~/Content/application.css.bundle", BundleOptions.Normal) : Html.RenderCssBundle("~/Content/application.css.bundle", BundleOptions.MinifiedAndCombined))
+    @(HttpContext.Current.IsDebuggingEnabled ? Html.RenderCssBundle("~/Content/application.css.bundle", BundleOptions.Normal) : Html.RenderCssBundle("~/Content/application.css.bundle", BundleOptions.Normal))
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -76,7 +76,7 @@
     </div>
     <div ng-controller="LoadingCtrl" id="loading" ng-show="loading"><span>{{message}}</span></div>
     @Html.Raw(Profiler.RenderIncludes().ToHtmlString())
-    @(HttpContext.Current.IsDebuggingEnabled ? Html.RenderJsBundle("~/Scripts/application.js.bundle", BundleOptions.Normal) : Html.RenderJsBundle("~/Scripts/application.js.bundle", BundleOptions.MinifiedAndCombined))
+    @(HttpContext.Current.IsDebuggingEnabled ? Html.RenderJsBundle("~/Scripts/application.js.bundle", BundleOptions.Normal) : Html.RenderJsBundle("~/Scripts/application.js.bundle", BundleOptions.Normal))
     @RenderSection("scripts", required: false)
 </body>
 </html>
