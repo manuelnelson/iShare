@@ -38,5 +38,18 @@ namespace iShare.BusinessLogic
             }
 
         }
+
+        public User GetByUserAuthId(int userAuthId)
+        {
+            try
+            {
+                return UserRepository.GetByUserAuthId(userAuthId);
+            }
+            catch (Exception ex)
+            {
+                ErrorSignal.FromCurrentContext().Raise(ex);
+                throw new Exception("Unable to retrieve information", ex);
+            }
+        }
     }
 }

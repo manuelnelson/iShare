@@ -1,21 +1,19 @@
-﻿using ServiceStack.DataAnnotations;
-using iShare.Models.Contract;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace iShare.Models
+namespace ReadApi.Models
 {
-    [Alias("Charities")]
-    public class Charity : IEntity
+    public class Charity
     {
-        [AutoIncrement]
-        public long Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public int OrgId { get; set; }
         public long CategoryId { get; set; }
-        [Ignore]
-        public Charity Category { get; set; }
         public string Cause { get; set; }
         public string TagLine { get; set; }
         public string Summary { get; set; }
