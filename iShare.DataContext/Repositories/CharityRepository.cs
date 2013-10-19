@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using iShare.DataInterface;
 using iShare.Models;
 
@@ -13,7 +13,7 @@ namespace iShare.DataContext.Repositories
 
         public List<Charity> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDbSet().ToList();
         }
     }
 }

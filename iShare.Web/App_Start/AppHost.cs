@@ -63,8 +63,8 @@ namespace iShare.Web.App_Start
             container.DefaultReuse = ReuseScope.Request;
 
             //Uncomment to use Entity Framework
-            //RegisterEfServicesAndRepositories(container);
-            RegisterOrmLiteServicesAndRepositories(container);
+            RegisterEfServicesAndRepositories(container);
+            //RegisterOrmLiteServicesAndRepositories(container);
             RegisterServices(container);
             RegisterCacheAndStorage(container);
 
