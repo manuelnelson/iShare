@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.60\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\packages\ServiceStack.3.9.60\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text, Version=3.9.60.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ServiceStack.Text.3.9.60\lib\net35\ServiceStack.Text.dll</HintPath>
@@ -77,6 +80,7 @@
     <Compile Include="OrmLiteRepositories\CategoryOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CauseOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CharityOrmLiteRepository.cs" />
+    <Compile Include="OrmLiteRepositories\CustomOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\OrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\UserOrmLiteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

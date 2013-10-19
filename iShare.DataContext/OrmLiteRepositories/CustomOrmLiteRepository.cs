@@ -8,7 +8,7 @@ using ServiceStack.OrmLite;
 using ServiceStack.ServiceInterface.Auth;
 using ServiceStack.Text;
 
-namespace DataLayerContext.OrmLiteRepositories
+namespace iShare.DataContext.OrmLiteRepositories
 {
     //NOTE: For now, the only change here is that I allow the UserName to be a much longer field since I expect it to be an e-mail address.
     public class CustomOrmLiteAuthRepository : IUserAuthRepository, IClearable

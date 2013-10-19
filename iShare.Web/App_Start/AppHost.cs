@@ -1,6 +1,5 @@
 using System.Configuration;
 using System.Web.Mvc;
-using DataLayerContext.OrmLiteRepositories;
 using iShare.BusinessLogic;
 using iShare.BusinessLogic.Contracts;
 using iShare.DataContext.OrmLiteRepositories;
