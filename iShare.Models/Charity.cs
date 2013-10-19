@@ -15,7 +15,7 @@ namespace iShare.Models
         public int OrgId { get; set; }
         public long CategoryId { get; set; }
         [Ignore]
-        public Charity Category { get; set; }
+        public Category Category { get; set; }
         public string Cause { get; set; }
         public string TagLine { get; set; }
         public string Summary { get; set; }
