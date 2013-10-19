@@ -19,6 +19,7 @@ namespace iShare.Web.RestServices
         {
             public long Id { get; set; }
             public long[] Ids { get; set; }
+            public int UserAuthId { get; set; }
         }
 
         public class UsersService : ServiceBase

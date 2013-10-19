@@ -72,14 +72,6 @@
     <Compile Include="Migrations\201310191609490_SeedData.Designer.cs">
       <DependentUpon>201310191609490_SeedData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310191736472_AddCategoryForeignKeyToCharity.cs" />
-    <Compile Include="Migrations\201310191736472_AddCategoryForeignKeyToCharity.Designer.cs">
-      <DependentUpon>201310191736472_AddCategoryForeignKeyToCharity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310192006599_DummyFix.cs" />
-    <Compile Include="Migrations\201310192006599_DummyFix.Designer.cs">
-      <DependentUpon>201310192006599_DummyFix.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrmLiteRepositories\CategoryOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CauseOrmLiteRepository.cs" />
@@ -112,12 +104,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201310191609490_SeedData.resx">
       <DependentUpon>201310191609490_SeedData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310191736472_AddCategoryForeignKeyToCharity.resx">
-      <DependentUpon>201310191736472_AddCategoryForeignKeyToCharity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310192006599_DummyFix.resx">
-      <DependentUpon>201310192006599_DummyFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

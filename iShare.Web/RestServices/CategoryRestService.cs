@@ -19,6 +19,7 @@ namespace iShare.Web.RestServices
         {
             public long Id { get; set; }
             public long[] Ids { get; set; }
+            public string Name { get; set; }
         }
 
         public class CategoriesService : ServiceBase
