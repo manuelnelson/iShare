@@ -32341,7 +32341,7 @@ TodoApp.factory('messageService', ['$location', function ($location) {
 }]);
 ;//Todoservice
 TodoApp.factory('todoService', ['$resource', function ($resource) {
-    return $resource('/api/todos/:Id', { Id: '@Id' },
+    return $resource('/api/categories/:Id', { Id: '@Id' },
     {
         update: { method: 'PUT', params: { format: 'json' } },
         deleteAll: { method: 'DELETE', params: { format: 'json' } }
@@ -32397,3 +32397,47 @@ TodoApp.factory('todoService', ['$resource', function ($resource) {
         };
 
     }];
+;//Todoservice
+TodoApp.factory('todoService', ['$resource', function ($resource) {
+    return $resource('/api/categories/:Id', { Id: '@Id' },
+    {
+        update: { method: 'PUT', params: { format: 'json' } },
+        deleteAll: { method: 'DELETE', params: { format: 'json' } }
+    });
+}]);
+
+
+;var CharityCtrl = ['$scope', '$routeParams', '$location', 'charityService',
+    function ($scope, $routeParams, $location, charityService) {
+    //$scope.getTodos = function () {
+    //    todoService.query({ format: 'json' }, function (todos) {
+    //        $scope.todos = [];
+    //        $scope.todos = $scope.todos.concat(todos);
+    //    });
+    //};
+
+    $scope.addCharity = function () {
+        charityService.save(null, $scope.charity, function () {
+        });
+    };
+
+    $scope.archive = function () {
+        var deleteTodos = _.reject($scope.todos, function (todo) {
+            return !todo.Completed;
+        });
+
+        var deleteIds = [];
+        _.each(deleteTodos, function(item) {
+            deleteIds.push(item.Id);
+        });
+        
+        todoService.deleteAll({Ids: deleteIds}, function () {
+            var keepTodos = _.reject($scope.todos, function (todo) {
+                return todo.Completed;
+            });
+            $scope.todos = [];
+            $scope.todos = keepTodos;
+        });
+    };
+    $scope.getTodos();
+}];

@@ -1,0 +1,78 @@
+﻿<div class="form-vertical wrapper">
+    <div class="row">
+        <div class="col-lg-6">
+            <form class="well form-vertical" ng-controller="CharityCtrl" name="charityForm">
+                <fieldset>
+                    <legend>Charity</legend>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Name" required ng-model="charity.Name" placeholder="Name" type="text" value="">
+                        </div>
+                        <div ng-show="charityForm.Name.$dirty && charityForm.Name.$invalid">
+                            <span class="form-error" ng-show="charityForm.Name.$error.required">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Url" required ng-model="charity.Url" placeholder="Url" type="text" value="">
+                        </div>
+                        <div ng-show="charityForm.Url.$dirty && charityForm.Url.$invalid">
+                            <span class="form-error" ng-show="charityForm.Url.$error.required">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="City" required ng-model="charity.City" placeholder="City" type="text" value="">
+                        </div>
+                        <div ng-show="charityForm.City.$dirty && charityForm.City.$invalid">
+                            <span class="form-error" ng-show="charityForm.City.$error.required">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="State" required ng-model="charity.State" placeholder="State" type="text" value="">
+                        </div>
+                        <div ng-show="charityForm.State.$dirty && charityForm.State.$invalid">
+                            <span class="form-error" ng-show="charityForm.State.$error.required">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="CategoryId" required ng-model="charity.CategoryId" placeholder="CategoryId" type="text" value="">
+                        </div>
+                        <div ng-show="charityForm.Name.$dirty && charityForm.Name.$invalid">
+                            <span class="form-error" ng-show="charityForm.Name.$error.required">This field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Cause" required ng-model="charity.Cause" placeholder="Cause" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Tagline" required ng-model="charity.Tagline" placeholder="Tagline" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Summary" required ng-model="charity.Summary" placeholder="Summary" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Rating" required ng-model="charity.Rating" placeholder="Rating" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-8">
+                            <input class="form-control" name="Score" required ng-model="charity.Score" placeholder="Score" type="text" value="">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" ng-click="addCharity()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

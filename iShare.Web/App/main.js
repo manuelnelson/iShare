@@ -14,5 +14,6 @@ var TodoApp = angular.module("TodoApp", ["ngResource", "ngRoute", 'ui.bootstrap'
     $routeProvider.
         when('/', { controller: TodoListCtrl, templateUrl: '/app/Todo/List/List.html' }).
         when('/edit/:todoId', { controller: TodoEditCtrl, templateUrl: '/app/Todo/Edit/Edit.html' }).
+        when('/charity', { controller: CharityCtrl, templateUrl: '/app/Charity/Charity.html' }).
         otherwise({ redirectTo: '/' });
 }]); 

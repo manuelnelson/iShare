@@ -180,6 +180,9 @@
     <Compile Include="RestServices\UserRestService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Charity\charity-controller.js" />
+    <Content Include="App\Charity\charity-service.js" />
+    <Content Include="App\Charity\Charity.html" />
     <Content Include="App\loading-controller.js" />
     <Content Include="App\loading-service.js" />
     <Content Include="App\message-controller.js" />
@@ -1133,7 +1136,6 @@
   <ItemGroup>
     <Folder Include="Filters\" />
     <Folder Include="Helper\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
