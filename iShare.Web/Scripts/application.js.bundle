@@ -14,3 +14,4 @@ ui-bootstrap-custom-tpls-0.6.0.js
 ../app/Todo/Edit/edit-controller.js
 ../app/Charity/Charity-service.js
 ../app/Charity/Charity-controller.js
+../app/Category/Category-service.js

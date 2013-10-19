@@ -180,6 +180,7 @@
     <Compile Include="RestServices\UserRestService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Category\category-service.js" />
     <Content Include="App\Charity\charity-controller.js" />
     <Content Include="App\Charity\charity-service.js" />
     <Content Include="App\Charity\Charity.html" />

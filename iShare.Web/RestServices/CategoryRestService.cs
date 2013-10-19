@@ -28,12 +28,7 @@ namespace iShare.Web.RestServices
 
             public object Get(CategoryDto request)
             {
-                return CategoryService.Get(1);
-                //if (request.Ids != null && request.Ids.Length > 0)
-                //    return CategoryService.Get(request.Ids);
-                //if (request.Id > 0)
-                //    return CategoryService.Get(request.Id);
-                throw new HttpError(HttpStatusCode.BadRequest, "Invalid argument(s) supplied.");
+                return CategoryService.GetAll();
             }
 
             public object Put(CategoryDto request)

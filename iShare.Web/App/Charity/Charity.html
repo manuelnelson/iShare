@@ -35,7 +35,11 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-8">
-                            <input class="form-control" name="CategoryId" required ng-model="charity.CategoryId" placeholder="CategoryId" type="text" value="">
+                            <select ng-model="charity.CategoryId" class="form-control" name="CategoryId" ng-options="category.Id as category.Name for category in categories" required>
+                                <option ng-show="!charity.CategoryId > 0" disabled selected value="">-- Select Category --</option>
+                            </select>
+
+<!--                            <input class="form-control" name="CategoryId" required ng-model="charity.CategoryId" placeholder="CategoryId" type="text" value="">-->
                         </div>
                         <div ng-show="charityForm.Name.$dirty && charityForm.Name.$invalid">
                             <span class="form-error" ng-show="charityForm.Name.$error.required">This field is required.</span>
@@ -43,7 +47,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-8">
-                            <input class="form-control" name="Cause"  ng-model="charity.Cause" placeholder="Cause" type="text" value="">
+                            <input class="form-control" name="Cause" ng-model="charity.Cause" placeholder="Cause" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group row">

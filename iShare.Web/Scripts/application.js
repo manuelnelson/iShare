@@ -32208,6 +32208,7 @@ var TodoApp = angular.module("TodoApp", ["ngResource", "ngRoute", 'ui.bootstrap'
     $routeProvider.
         when('/', { controller: TodoListCtrl, templateUrl: '/app/Todo/List/List.html' }).
         when('/edit/:todoId', { controller: TodoEditCtrl, templateUrl: '/app/Todo/Edit/Edit.html' }).
+        when('/charity', { controller: CharityCtrl, templateUrl: '/app/Charity/Charity.html' }).
         otherwise({ redirectTo: '/' });
 }]); 
 
@@ -32398,8 +32399,8 @@ TodoApp.factory('todoService', ['$resource', function ($resource) {
 
     }];
 ;//Todoservice
-TodoApp.factory('todoService', ['$resource', function ($resource) {
-    return $resource('/api/categories/:Id', { Id: '@Id' },
+TodoApp.factory('charityService', ['$resource', function ($resource) {
+    return $resource('/api/charities/:Id', { Id: '@Id' },
     {
         update: { method: 'PUT', params: { format: 'json' } },
         deleteAll: { method: 'DELETE', params: { format: 'json' } }
@@ -32407,37 +32408,36 @@ TodoApp.factory('todoService', ['$resource', function ($resource) {
 }]);
 
 
-;var CharityCtrl = ['$scope', '$routeParams', '$location', 'charityService',
-    function ($scope, $routeParams, $location, charityService) {
-    //$scope.getTodos = function () {
-    //    todoService.query({ format: 'json' }, function (todos) {
-    //        $scope.todos = [];
-    //        $scope.todos = $scope.todos.concat(todos);
-    //    });
-    //};
+;var CharityCtrl = ['$scope', '$routeParams', '$location', 'charityService', 'categoriesService',
+    function ($scope, $routeParams, $location, charityService, categoriesService) {
+        //$scope.getTodos = function () {
+        //    todoService.query({ format: 'json' }, function (todos) {
+        //        $scope.todos = [];
+        //        $scope.todos = $scope.todos.concat(todos);
+        //    });
+        //};
 
-    $scope.addCharity = function () {
-        charityService.save(null, $scope.charity, function () {
-        });
-    };
-
-    $scope.archive = function () {
-        var deleteTodos = _.reject($scope.todos, function (todo) {
-            return !todo.Completed;
-        });
-
-        var deleteIds = [];
-        _.each(deleteTodos, function(item) {
-            deleteIds.push(item.Id);
-        });
-        
-        todoService.deleteAll({Ids: deleteIds}, function () {
-            var keepTodos = _.reject($scope.todos, function (todo) {
-                return todo.Completed;
+        $scope.categories = function () {
+            categoriesService.getList(null, function () {               
             });
-            $scope.todos = [];
-            $scope.todos = keepTodos;
-        });
-    };
-    $scope.getTodos();
-}];
+        };
+
+        $scope.addCharity = function () {
+            charityService.save(null, $scope.charity, function () {
+                $scope.charityForm.$setPristine();
+                $scope.charity = '';
+            });
+        };
+
+    }];
+;//Todoservice
+TodoApp.factory('categoriesService', ['$resource', function ($resource) {
+    return $resource('/api/categories/:Id', { Id: '@Id' },
+    {
+        getList: { method: 'GET', isArray: true, params: { format: 'json' } },
+        update: { method: 'PUT', params: { format: 'json' } },
+        deleteAll: { method: 'DELETE', params: { format: 'json' } }
+    });
+}]);
+
+
