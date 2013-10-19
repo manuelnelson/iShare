@@ -20,6 +20,6 @@ namespace iShare.Models
         public string TagLine { get; set; }
         public string Summary { get; set; }
         public int Rating { get; set; }
-        public int Score { get; set; }
+        public double Score { get; set; }
     }
 }

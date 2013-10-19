@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201310191609490_SeedData.Designer.cs">
       <DependentUpon>201310191609490_SeedData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310192039116_ScoreToDouble.cs" />
+    <Compile Include="Migrations\201310192039116_ScoreToDouble.Designer.cs">
+      <DependentUpon>201310192039116_ScoreToDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrmLiteRepositories\CategoryOrmLiteRepository.cs" />
     <Compile Include="OrmLiteRepositories\CauseOrmLiteRepository.cs" />
@@ -104,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201310191609490_SeedData.resx">
       <DependentUpon>201310191609490_SeedData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310192039116_ScoreToDouble.resx">
+      <DependentUpon>201310192039116_ScoreToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

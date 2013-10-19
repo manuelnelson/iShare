@@ -1,4 +1,6 @@
-﻿using iShare.DataInterface;
+﻿using System;
+using System.Collections.Generic;
+using iShare.DataInterface;
 using iShare.Models;
 
 namespace iShare.DataContext.Repositories
@@ -7,6 +9,11 @@ namespace iShare.DataContext.Repositories
     {
         public CharityRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+        }
+
+        public List<Charity> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

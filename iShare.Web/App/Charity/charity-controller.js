@@ -10,7 +10,7 @@
     $scope.addCharity = function () {
         charityService.save(null, $scope.charity, function () {
             $scope.charityForm.$setPristine();
-            $scope.charity.Task = '';
+            $scope.charity = '';
         });
     };
 

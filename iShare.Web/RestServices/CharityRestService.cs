@@ -42,7 +42,7 @@ namespace iShare.Web.RestServices
                     return CharityService.Get(request.Ids);
                 if (request.Id > 0)
                     return CharityService.Get(request.Id);
-                throw new HttpError(HttpStatusCode.BadRequest, "Invalid argument(s) supplied.");
+                return CharityService.GetAll();
             }
 
             public object Put(CharityDto request)
