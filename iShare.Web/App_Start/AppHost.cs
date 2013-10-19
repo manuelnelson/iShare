@@ -140,8 +140,8 @@ namespace iShare.Web.App_Start
             //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
             container.Register<IUserAuthRepository>(c => new CustomOrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
 
-            var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>();
-            authRepo.CreateMissingTables();
+            //var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>();
+            //authRepo.CreateMissingTables();
         }
         
         private void RegisterCacheAndStorage(Container container)
