@@ -1,6 +1,4 @@
-﻿using System.Net;
-using ServiceStack.Common;
-using ServiceStack.Common.Web;
+﻿using ServiceStack.Common;
 using ServiceStack.ServiceHost;
 using iShare.BusinessLogic.Contracts;
 using iShare.Models;
@@ -17,7 +15,7 @@ namespace iShare.Web.RestServices
         [Route("/Charities/{Id}")]
         public class CharityDto : IReturn<CharityDto>
         {
-            public long Id { get; set; }
+            public long Id { get; set; } 
             public long[] Ids { get; set; }
             public string Name { get; set; }
             public string Url { get; set; }
