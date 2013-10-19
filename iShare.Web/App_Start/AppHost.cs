@@ -35,26 +35,26 @@ using IDbConnectionFactory = ServiceStack.OrmLite.IDbConnectionFactory;
 
 namespace iShare.Web.App_Start
 {
-	//A customizeable typed UserSession that can be extended with your own properties
-	//To access ServiceStack's Session, Cache, etc from MVC Controllers inherit from ControllerBase<CustomUserSession>
+    //A customizeable typed UserSession that can be extended with your own properties
+    //To access ServiceStack's Session, Cache, etc from MVC Controllers inherit from ControllerBase<CustomUserSession>
     //public class CustomUserSession : AuthUserSession
     //{
     //    public string CustomProperty { get; set; }
     //}
 
-	public class AppHost : AppHostBase
-	{		
-		public AppHost() //Tell ServiceStack the name and where to find your web services
-			: base("iShare Rest Service", typeof(CharityRestService).Assembly) { }
+    public class AppHost : AppHostBase
+    {
+        public AppHost() //Tell ServiceStack the name and where to find your web services
+            : base("iShare Rest Service", typeof(CharityRestService).Assembly) { }
 
-		public override void Configure(Container container)
-		{
-			//Set JSON web services to return idiomatic JSON camelCase properties
-			ServiceStack.Text.JsConfig.EmitCamelCaseNames = false;
-		
-			//Uncomment to change the default ServiceStack configuration
-			//SetConfig(new EndpointHostConfig {
-			//});
+        public override void Configure(Container container)
+        {
+            //Set JSON web services to return idiomatic JSON camelCase properties
+            ServiceStack.Text.JsConfig.EmitCamelCaseNames = false;
+
+            //Uncomment to change the default ServiceStack configuration
+            //SetConfig(new EndpointHostConfig {
+            //});
 
             //Use Elmah with ServiceStack
             LogManager.LogFactory = new ElmahLogFactory(new NullLogFactory());
@@ -64,20 +64,26 @@ namespace iShare.Web.App_Start
 
             //Uncomment to use Entity Framework
             //RegisterEfServicesAndRepositories(container);
-		    RegisterOrmLiteServicesAndRepositories(container);
+            RegisterOrmLiteServicesAndRepositories(container);
             RegisterServices(container);
-		    RegisterCacheAndStorage(container);
-            
+            RegisterCacheAndStorage(container);
+
             //Enable Authentication
-			ConfigureAuth(container);
+            ConfigureAuth(container);
 
-			//Set MVC to use the same Funq IOC as ServiceStack
-			ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
-		}
+            //Set MVC to use the same Funq IOC as ServiceStack
+            ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
+        }
 
-	    private void RegisterOrmLiteServicesAndRepositories(Container container)
-	    {
+        private void RegisterOrmLiteServicesAndRepositories(Container container)
+        {
             var connectionString = ConfigurationManager.ConnectionStrings["DataContext"].ConnectionString;
+            container.Register<IDbConnectionFactory>(c =>
+            new OrmLiteConnectionFactory(connectionString, SqlServerOrmLiteDialectProvider.Instance)
+            {
+                ConnectionFilter = x => new ProfiledDbConnection(x, Profiler.Current)
+            });
+
             //repositories
             container.Register<IUserRepository>(c => new UserOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
             container.Register<ICharityRepository>(c => new CharityOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
@@ -85,8 +91,8 @@ namespace iShare.Web.App_Start
             container.Register<ICategoryRepository>(c => new CategoryOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
             //database
             OrmLiteConfigure.Initialize(container, connectionString);
-	        
-	    }
+
+        }
         private void RegisterServices(Container container)
         {
             //services
@@ -94,10 +100,10 @@ namespace iShare.Web.App_Start
             container.Register<ICharityService>(c => new CharityService(c.Resolve<ICharityRepository>()));
             container.Register<ICauseService>(c => new CauseService(c.Resolve<ICauseRepository>()));
             container.Register<ICategoryService>(c => new CategoryService(c.Resolve<ICategoryRepository>()));
-            
+
         }
-	    private void RegisterEfServicesAndRepositories(Container container)
-	    {
+        private void RegisterEfServicesAndRepositories(Container container)
+        {
             //Make the default lifetime of objects limited to request
             var connectionString = ConfigurationManager.ConnectionStrings["DataContext"].ConnectionString;
             container.Register<IDbConnectionFactory>(c =>
@@ -129,7 +135,7 @@ namespace iShare.Web.App_Start
 				}) { HtmlRedirect = null });
 
             //Default route: /register
-            Plugins.Add(new RegistrationFeature()); 
+            Plugins.Add(new RegistrationFeature());
 
             //Requires ConnectionString configured in Web.Config
             var connectionString = ConfigurationManager.ConnectionStrings["DataContext"].ConnectionString;
@@ -143,16 +149,16 @@ namespace iShare.Web.App_Start
             //var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>();
             //authRepo.CreateMissingTables();
         }
-        
+
         private void RegisterCacheAndStorage(Container container)
         {
             container.Register<ICacheClient>(c => new MemoryCacheClient()).ReusedWithin(ReuseScope.Container);
             container.Register<ISessionFactory>(c => new SessionFactory(c.Resolve<ICacheClient>())).ReusedWithin(ReuseScope.Container);
         }
 
-		public static void Start()
-		{
-			new AppHost().Init();
-		}
-	}
+        public static void Start()
+        {
+            new AppHost().Init();
+        }
+    }
 }
