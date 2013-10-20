@@ -6,6 +6,7 @@ using ServiceStack.ServiceHost;
 using ServiceStack.ServiceInterface;
 using iShare.BusinessLogic.Contracts;
 using iShare.Models;
+using iShare.Web.Helper;
 
 namespace iShare.Web.RestServices
 {
@@ -24,6 +25,13 @@ namespace iShare.Web.RestServices
             public long CharityId { get; set; }
             public double Amount { get; set; }
             public long UserId { get; set; }
+            public string Number { get; set; }
+            public string Type { get; set; }
+            public int Month { get; set; }
+            public int Year { get; set; }
+            public int Code { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
         }
 
         public class DonationsService : Service
@@ -51,8 +59,12 @@ namespace iShare.Web.RestServices
             {
                 var DonationEntity = request.TranslateTo<Donation>();
                 DonationService.Add(DonationEntity);
-                UserService.UpdateAmount(request.UserId, request.Amount);
-                return DonationEntity;
+                var total = UserService.UpdateAmount(request.UserId, request.Amount);
+
+                //Send to PayPal
+                var accessToken = PaypalService.Initiate();
+                PaypalService.Donate(request, accessToken);
+                return total;
             }
 
             public void Delete(DonationDto request)
