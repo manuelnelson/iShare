@@ -76,13 +76,13 @@ namespace iShare.Web.RestServices
                 }
                 try
                 {
-                    PaypalService.Donate(request, accessToken.Token);
+                    //PaypalService.Donate(request, accessToken.Token);
                 }
                 catch (Exception)
                 {
                     accessToken = new AccessToken { Token = PaypalService.Initiate() };
                     Cache.Add("", accessToken, new TimeSpan(0, 20, 0));
-                    PaypalService.Donate(request, accessToken.Token);                                        
+                    //PaypalService.Donate(request, accessToken.Token);                                        
                 }
                 
                 return new DonationDtoResponse
