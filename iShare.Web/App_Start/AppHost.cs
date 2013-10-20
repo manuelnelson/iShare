@@ -89,6 +89,7 @@ namespace iShare.Web.App_Start
             container.Register<ICharityRepository>(c => new CharityOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
             container.Register<ICauseRepository>(c => new CauseOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
             container.Register<ICategoryRepository>(c => new CategoryOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
+            container.Register<IDonationRepository>(c => new DonationOrmLiteRepository(c.Resolve<IDbConnectionFactory>()));
             //database
             OrmLiteConfigure.Initialize(container, connectionString);
 
@@ -100,7 +101,7 @@ namespace iShare.Web.App_Start
             container.Register<ICharityService>(c => new CharityService(c.Resolve<ICharityRepository>()));
             container.Register<ICauseService>(c => new CauseService(c.Resolve<ICauseRepository>()));
             container.Register<ICategoryService>(c => new CategoryService(c.Resolve<ICategoryRepository>()));
-
+            container.Register<IDonationService>(c => new DonationService(c.Resolve<IDonationRepository>()));
         }
         private void RegisterEfServicesAndRepositories(Container container)
         {
@@ -121,6 +122,7 @@ namespace iShare.Web.App_Start
             container.Register<ICauseRepository>(c => new CauseRepository(c.Resolve<IUnitOfWork>()));
             container.Register<ICharityRepository>(c => new CharityRepository(c.Resolve<IUnitOfWork>()));
             container.Register<ICategoryRepository>(c => new CategoryRepository(c.Resolve<IUnitOfWork>()));
+            container.Register<IDonationRepository>(c => new DonationRepository(c.Resolve<IUnitOfWork>()));
         }
 
         // Uncomment to enable ServiceStack Authentication and CustomUserSession
@@ -142,8 +144,7 @@ namespace iShare.Web.App_Start
             container.Register<IDbConnectionFactory>(c =>
                 new OrmLiteConnectionFactory(connectionString, SqlServerDialect.Provider));
 
-            //container.Register<IUserAuthRepository>(c =>
-            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
+            //container.Register<IUserAuthRepository>(c =>new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
             container.Register<IUserAuthRepository>(c => new CustomOrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
 
             //var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>();

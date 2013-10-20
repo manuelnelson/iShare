@@ -169,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\PaypalService.cs" />
     <Compile Include="Models\CustomUserSession.cs" />
     <Compile Include="Mvc.Bundler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1137,7 +1138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filters\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

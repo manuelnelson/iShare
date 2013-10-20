@@ -13,6 +13,7 @@ namespace iShare.DataContext
         public DbSet<Charity> Charities { get; set; }
         public DbSet<Cause> Causes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Donation> Donations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -20,7 +21,15 @@ namespace iShare.DataContext
             SetupCharityMapping(modelBuilder);
             SetupCauseMapping(modelBuilder);
             SetupCategoryMapping(modelBuilder);
+            SetupDonationMapping(modelBuilder);
             base.OnModelCreating(modelBuilder);
+        }
+
+        private void SetupDonationMapping(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Donation>().HasKey(u => u.Id);
+            modelBuilder.Entity<Donation>().Property(u => u.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);            
         }
 
         private void SetupCauseMapping(DbModelBuilder modelBuilder)

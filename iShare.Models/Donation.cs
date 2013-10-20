@@ -11,5 +11,7 @@ namespace iShare.Models
         public long CharityId { get; set; }
         public double Amount { get; set; }
         public long UserId { get; set; }
+        [Ignore]
+        public User User { get; set; }
     }
 }
