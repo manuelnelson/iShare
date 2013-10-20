@@ -38,6 +38,7 @@ namespace iShare.Web.RestServices
         public class DonationDtoResponse
         {
             public string Confirmed { get; set; }
+            public double Total { get; set; }
         }
         public class DonationsService : Service
         {
@@ -86,7 +87,8 @@ namespace iShare.Web.RestServices
                 
                 return new DonationDtoResponse
                 {
-                    Confirmed = "true"
+                    Confirmed = "true",
+                    Total = total
                 };
             }
 
