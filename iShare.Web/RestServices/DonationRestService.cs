@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using ServiceStack.Common;
 using ServiceStack.Common.Web;
@@ -18,7 +19,7 @@ namespace iShare.Web.RestServices
         [Route("/Donations", "DELETE")]
         [Route("/Donations")]
         [Route("/Donations/{Id}")]
-        public class DonationDto : IReturn<DonationDto>
+        public class DonationDto : IReturn<DonationDtoResponse>
         {
             public long Id { get; set; }
             public long[] Ids { get; set; }
@@ -34,6 +35,10 @@ namespace iShare.Web.RestServices
             public string LastName { get; set; }
         }
 
+        public class DonationDtoResponse
+        {
+            public string Confirmed { get; set; }
+        }
         public class DonationsService : Service
         {
             public IDonationService DonationService { get; set; } //Injected by IOC
@@ -62,9 +67,27 @@ namespace iShare.Web.RestServices
                 var total = UserService.UpdateAmount(request.UserId, request.Amount);
 
                 //Send to PayPal
-                var accessToken = PaypalService.Initiate();
-                PaypalService.Donate(request, accessToken);
-                return total;
+                var accessToken = Cache.Get<AccessToken>("0");
+                if (accessToken == null)
+                {
+                    accessToken = new AccessToken { Token = PaypalService.Initiate() };
+                    Cache.Add("0", accessToken, new TimeSpan(0, 20, 0));
+                }
+                try
+                {
+                    PaypalService.Donate(request, accessToken.Token);
+                }
+                catch (Exception)
+                {
+                    accessToken = new AccessToken { Token = PaypalService.Initiate() };
+                    Cache.Add("", accessToken, new TimeSpan(0, 20, 0));
+                    PaypalService.Donate(request, accessToken.Token);                                        
+                }
+                
+                return new DonationDtoResponse
+                {
+                    Confirmed = "true"
+                };
             }
 
             public void Delete(DonationDto request)
@@ -74,6 +97,11 @@ namespace iShare.Web.RestServices
                 else
                     DonationService.Delete(request.Id);
             }
+
+        }
+        public class AccessToken
+        {
+            public string Token { get; set; }
         }
 
     }

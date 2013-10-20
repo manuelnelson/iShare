@@ -58,17 +58,8 @@ namespace iShare.Web.Helper
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    //result.FromJson<>()
                 }
             }
-            //using (var client = new WebClient())
-            //{
-            //    client.Headers.Add(headers);
-            //    byte[] response = client.UploadValues("https://api.sandbox.paypal.com/v1/payments/payment", stringData);
-            //    var serializedResponse = response.FromUtf8Bytes().FromJson<AccessToken>();
-            //    Console.WriteLine(serializedResponse.access_token);
-            //    return serializedResponse.access_token;
-            //}
         }
         #region RequestObjects
         public class DonateDto
